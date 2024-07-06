@@ -1,0 +1,16 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "**Advent of Code** was suggested to me by a friend as a fun and semi-practical way to reinforce programming knowledge.",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
