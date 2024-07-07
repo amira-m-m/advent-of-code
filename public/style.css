@@ -1,0 +1,131 @@
+:root {
+
+    
+    --default-font: "PT Sans", Arial, sans-serif;
+    --default-size: 1.25em;
+    --default-radius: 1em;
+    --default-color: rgba(17, 27, 31, 1);
+    --default-bg-color: rgba(255, 255, 255, 0.85);
+    --default-border: 3px dotted rgba(203, 203, 203, 1);
+    --default-transition: 400ms;
+
+    --accent-font: "PT Sans Narrow", "Arial Narrow", sans-serif;
+    --accent-color-1: rgba(67, 104, 124, 1);
+    --accent-color-2: rgba(179, 218, 241, 1);
+    --accent-color-3: rgba(255, 255, 255, 1);
+    --accent-color-4: rgba(203, 203, 203, 1);
+    --accent-weight: 600;
+
+    --header-size: 1.75em;
+
+    --button-size: 0.9em;
+    --button-scale: scale(1.1);
+
+    --large-space: 5em;
+    --medium-space: 3em;
+    --small-space: 1em;
+    --tiny-space: 0.25em;
+
+}
+
+body {
+    font-family: var(--default-font);
+    color: var(--default-color);
+    font-size: var(--default-size);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('bg-img.avif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+header {
+    background-color: var(--default-color);
+    color: var(--accent-color-2);
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+#header-left {
+    padding-left: var(--small-space);
+    display: flex;
+    align-items: center;
+}
+
+#header-right {
+    padding-right: var(--small-space);
+    display: flex;
+    align-items: center;
+    
+}
+
+#container {
+    padding: var(--medium-space) var(--large-space);
+    background-color: var(--default-bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex: 1;
+    margin: 0% 15%;
+    text-align: center;
+}
+
+#prompt {
+    margin: 0px var(--medium-space) var(--medium-space) var(--medium-space);
+    padding-bottom: var(--medium-space);
+    border-bottom: var(--default-border);
+}
+
+footer {
+    margin: var(--medium-space);
+    padding: var(--medium-space);
+    border-top: var(--default-border);
+}
+
+h1 {
+    font-family: var(--accent-font);
+    color: var(--accent-color-2);
+    margin: var(--tiny-space);
+    font-size: var(--header-size);
+    text-transform: uppercase;
+}
+
+a {
+    color: var(--accent-color-1);
+    transition: var(--default-transition);
+    font-weight: var(--accent-weight);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-color-4);
+}
+
+.button {
+    padding: 1.5em 5em;
+    border-radius: var(--default-radius);
+    background-color: var(--accent-color-1);
+    font-family: var(--default-font);
+    font-size: var(--button-size);
+    color: var(--accent-color-3);
+    transition: var(--default-transition);
+    border: 0;
+}
+
+.button:hover {
+    background-color: var(--default-color);
+    color: var(--accent-color-4);
+    transform: var(--button-scale);
+}
+
+.big-icon {
+    font-size: var(--header-size);
+    color: var(--accent-color-3);
+}

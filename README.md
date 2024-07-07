@@ -29,3 +29,5 @@ Interested in trying it out yourself? Read more about how it works [here](https:
 ## Credits
 
 * Snowflake favicon from [VectorLogoZone](https://icon-icons.com/pack/Vector-Logo/2699) on icon-icons.com
+* Snowy background image from [Ant Rozetsky](https://unsplash.com/@rozetsky) on Unsplash
+* Icons from [Ion Icons](https://ionic.io/ionicons)
