@@ -94,6 +94,10 @@ function findFirstDigit(characters) {
             };
         };    
     };
+
+    alertUser(3);
+    return null;
+
 };
 
 function findLastDigit(characters) {
@@ -110,6 +114,10 @@ function findLastDigit(characters) {
             };
         };
     };
+
+    alertUser(3);
+    return null;
+
 };
 
 function concatenateDigits(first, last) {
@@ -130,6 +138,9 @@ function alertUser(alertCode) {
             break;
         case 2:
             alertMessage = 'The calibration file cannot be read.';
+            break;
+        case 3:
+            alertMessage = 'Decode algorithm requires each line to contain at least one digit.';
             break;
     };
 
