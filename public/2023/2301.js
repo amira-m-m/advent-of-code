@@ -20,8 +20,8 @@ pageContents.innerHTML = `
 
     <form id="cal-decoder">
         <label for="cal-doc">Upload a calibration file to determine the final calibration value</label><br />
-        <input type="file" accept=".txt" name="cal-doc" id="cal-doc" /><br />
-        <select name="algorithm-select" id="algorithm-select">
+        <input type="file" accept=".txt" name="cal-doc" id="cal-doc" required /><br />
+        <select name="algorithm-select" id="algorithm-select" required>
             <option value="a">Decode Algorithm A</option>
             <option value="b">Decode Algorithm B</option>
         </select><br />
@@ -54,7 +54,12 @@ inputForm.addEventListener('submit', (event) => {
             });
     }
     else {
-        alertUser(0);
+        if (calFile.type !== 'text/plain') {
+            alertUser(0);
+        }
+        else {
+            alertUser(4);
+        };
     };
 });
 
@@ -223,6 +228,9 @@ function alertUser(alertCode) {
             break;
         case 3:
             alertMessage = 'Decode algorithm requires each line to contain at least one digit.';
+            break;
+        case 4:
+            alertMessage = 'The calibration file could not be read.';
             break;
     };
 
