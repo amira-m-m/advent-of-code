@@ -37,7 +37,7 @@ const inputForm = document.getElementById('cal-decoder');
 const inputFile = document.getElementById('cal-doc');
 const output = document.getElementById('output');
 
-inputFile.addEventListener('change', (event) => {
+inputFile.addEventListener('change', () => {
     const fileNameText = document.getElementById('file-name-text');
     fileNameText.innerHTML = inputFile.files[0].name;
 });

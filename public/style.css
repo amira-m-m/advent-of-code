@@ -197,7 +197,7 @@ input[type="file"] {
     color: var(--accent-color-1);
 }
 
-#final-name-text {
+#file-name-text {
     font-style: italic;
 }
 
