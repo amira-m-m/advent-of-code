@@ -33,6 +33,9 @@ inputFile.addEventListener('change', (event) => {
             .catch(error => {
                 console.error(error);
             });
+    }
+    else {
+        alertUser(0);
     };
 });
 
@@ -103,4 +106,17 @@ function findLastDigit(characters) {
 function concatenateDigits(first, last) {
     let lineValue = Number((first.toString() + last.toString()));
     return lineValue;
+};
+
+function alertUser(alertCode) {
+
+    let alertMessage = '';
+
+    switch (alertCode) {
+        case 0:
+            alertMessage = 'Only plain text files are allowed.';
+            break;
+    };
+
+    output.innerHTML = `<p>${alertMessage}</p>`;
 };
