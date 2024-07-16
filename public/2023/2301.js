@@ -25,7 +25,7 @@ pageContents.innerHTML = `
             <option value="b">Decode Algorithm B</option>
         </select><br />
         <label for="cal-doc" class="regular-button">Upload</label>
-        <p class="hint">No file selected</p>
+        <p id="file-name-text" class="hint">No file selected</p>
         <input type="file" accept=".txt" name="cal-doc" id="cal-doc" required /><br />
         <button type="submit" class="action-button">Decode</button>
         <div id="output"></div>
@@ -36,6 +36,11 @@ pageContents.innerHTML = `
 const inputForm = document.getElementById('cal-decoder');
 const inputFile = document.getElementById('cal-doc');
 const output = document.getElementById('output');
+
+inputFile.addEventListener('change', (event) => {
+    const fileNameText = document.getElementById('file-name-text');
+    fileNameText.innerHTML = inputFile.files[0].name;
+});
 
 inputForm.addEventListener('submit', (event) => {
 
