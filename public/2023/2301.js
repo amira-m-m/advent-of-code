@@ -177,6 +177,10 @@ function readFirstDigit(characters) {
             };
          };
     };
+
+    alertUser(5);
+    return null;
+
 };
 
 function readLastDigit(characters) {
@@ -205,6 +209,9 @@ function readLastDigit(characters) {
          };
     };
 
+    alertUser(5);
+    return null;
+
 };
 
 function concatenateDigits(first, last) {
@@ -227,11 +234,13 @@ function alertUser(alertCode) {
             alertMessage = 'The calibration file cannot be read.';
             break;
         case 3:
-            alertMessage = 'Decode algorithm requires each line to contain at least one digit.';
+            alertMessage = 'Selected decode algorithm requires each line to contain at least one numeric digit.';
             break;
         case 4:
             alertMessage = 'The calibration file could not be read.';
             break;
+        case 5:
+            alertMessage = 'Selected decode algorithm requires each line to contain at least one numeric or written digit.';
     };
 
     output.innerHTML = `<p>${alertMessage}</p>`;
