@@ -24,7 +24,7 @@ pageContents.innerHTML = `
             <option value="a">Decode Algorithm A</option>
             <option value="b">Decode Algorithm B</option>
         </select><br />
-        <label for="cal-doc" class="regular-button">Upload</label>
+        <label for="cal-doc" class="regular-button" aria-label="Select plain text calibration file to upload" role="button">Upload</label>
         <p id="file-name-text" class="hint">No file selected</p>
         <input type="file" accept=".txt" name="cal-doc" id="cal-doc" required /><br />
         <button type="submit" class="action-button">Decode</button>
