@@ -47,7 +47,16 @@ function parseCalFile (file) {
 
         fileReader.onload = function(event) {
             const calText = event.target.result;
+            if (calText === '') {
+                alertUser(1);
+                reject(new Error('Empty file'));
+            };
             resolve(calText);
+        };
+
+        fileReader.onerror = function(error) {
+            alertUser(2);
+            reject(event.target.error);
         };
 
         fileReader.readAsText(file);
@@ -115,6 +124,12 @@ function alertUser(alertCode) {
     switch (alertCode) {
         case 0:
             alertMessage = 'Only plain text files are allowed.';
+            break;
+        case 1:
+            alertMessage = 'The calibration file cannot be empty.';
+            break;
+        case 2:
+            alertMessage = 'The calibration file cannot be read.';
             break;
     };
 
