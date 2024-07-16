@@ -71,7 +71,7 @@ inputForm.addEventListener('submit', (event) => {
             alertUser(0);
         }
         else {
-            alertUser(4);
+            alertUser(2);
         };
 
     };
@@ -205,7 +205,7 @@ function readFirstDigit(characters) {
          };
     };
 
-    alertUser(5);
+    alertUser(4);
     return null;
 
 };
@@ -236,7 +236,7 @@ function readLastDigit(characters) {
          };
     };
 
-    alertUser(5);
+    alertUser(4);
     return null;
 
 };
@@ -266,9 +266,6 @@ function alertUser(alertCode) {
             alertMessage = 'Selected decode algorithm requires each line to contain at least one numeric digit.';
             break;
         case 4:
-            alertMessage = 'The calibration file could not be read.';
-            break;
-        case 5:
             alertMessage = 'Selected decode algorithm requires each line to contain at least one numeric or written digit.';
     };
 
