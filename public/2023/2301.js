@@ -19,16 +19,17 @@ promptLink.href = 'https://adventofcode.com/2023/day/1';
 pageContents.innerHTML = `
 
     <form id="cal-decoder">
-        <label for="cal-doc">Upload a calibration file to determine the final calibration value</label><br />
-        <input type="file" accept=".txt" name="cal-doc" id="cal-doc" required /><br />
+        <p>Upload a calibration file to determine the final calibration value</p><br />
         <select name="algorithm-select" id="algorithm-select" required>
             <option value="a">Decode Algorithm A</option>
             <option value="b">Decode Algorithm B</option>
         </select><br />
-        <button type="submit">Decode</button>
+        <label for="cal-doc" class="regular-button">Upload</label>
+        <p class="hint">No file selected</p>
+        <input type="file" accept=".txt" name="cal-doc" id="cal-doc" required /><br />
+        <button type="submit" class="action-button">Decode</button>
+        <div id="output"></div>
     </form>
-
-    <div id="output"></div>
 
 `;
 
@@ -47,7 +48,9 @@ inputForm.addEventListener('submit', (event) => {
         parseCalFile(calFile)
             .then(parsedText => {
                 calValue = calcCalValue(parsedText);
-                output.innerHTML = `<p>The final calibration value is ${calValue}</p>`;
+                output.innerHTML = `
+                    <p class="solution">The final calibration value is <span id="cal-value" class="highlight">${calValue}</span></p>
+                `;
             })
             .catch(error => {
                 console.error(error);
@@ -243,5 +246,5 @@ function alertUser(alertCode) {
             alertMessage = 'Selected decode algorithm requires each line to contain at least one numeric or written digit.';
     };
 
-    output.innerHTML = `<p>${alertMessage}</p>`;
+    output.innerHTML = `<p class="problem">${alertMessage}</p>`;
 };
