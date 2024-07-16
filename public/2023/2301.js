@@ -37,11 +37,14 @@ const inputForm = document.getElementById('cal-decoder');
 const inputFile = document.getElementById('cal-doc');
 const output = document.getElementById('output');
 
+// Updates displayed file name text on new file selection
 inputFile.addEventListener('change', () => {
     const fileNameText = document.getElementById('file-name-text');
     fileNameText.innerHTML = inputFile.files[0].name;
 });
 
+// Attempts to calculate final calibration value based on
+// user's selected calibration file and decode algorithm
 inputForm.addEventListener('submit', (event) => {
 
     event.preventDefault();
@@ -61,16 +64,21 @@ inputForm.addEventListener('submit', (event) => {
                 console.error(error);
             });
     }
+    
     else {
+
         if (calFile.type !== 'text/plain') {
             alertUser(0);
         }
         else {
             alertUser(4);
         };
+
     };
 });
 
+// Attempts to parse calibration file and returns contents
+// in a string if successful
 function parseCalFile (file) {
 
     return new Promise((resolve, reject) => {
@@ -97,6 +105,16 @@ function parseCalFile (file) {
 
 };
 
+// These functions attempt to calculate a final calibration value
+// using whichever decode algorithm was selected by the user.
+// Calibration value is calculated as follows...
+// Find the first and last digit per line of calibration text
+// (Algorithm A accepts only numeric digits)
+// (Algorithm B accepts numeric or written digits)
+// Concatenate the first and last digits to get a two-digit number
+// Take a running sum of each two-digit number per line
+// Display final calibration value or relevant error
+
 function calcCalValue (parsedText) {
 
     let calValue = 0;
@@ -110,6 +128,7 @@ function calcCalValue (parsedText) {
         const characters = line.split('');
         let firstDigit, lastDigit;
 
+        // Algorithm A
         if (algorithm === 'a') {
             firstDigit = findFirstDigit(characters);
             lastDigit = findLastDigit(characters);
@@ -226,6 +245,8 @@ function concatenateDigits(first, last) {
     let lineValue = Number((first.toString() + last.toString()));
     return lineValue;
 };
+
+// Controls which error message the user sees under different conditions
 
 function alertUser(alertCode) {
 
