@@ -1,29 +1,48 @@
 const promptLink = document.getElementById('prompt-link');
 const pageContents = document.getElementById('solution');
 
+const WRITTEN_DIGITS = { 
+    'zero': 0,
+    'one' : 1,
+    'two' : 2,
+    'three' : 3,
+    'four' : 4, 
+    'five' : 5,
+    'six' : 6,
+    'seven' : 7,
+    'eight' : 8,
+    'nine' : 9
+};
+
 promptLink.href = 'https://adventofcode.com/2023/day/1';
 
 pageContents.innerHTML = `
 
-    <form id="file-submission>
+    <form id="cal-decoder">
         <label for="cal-doc">Upload a calibration file to determine the final calibration value</label><br />
         <input type="file" accept=".txt" name="cal-doc" id="cal-doc" /><br />
+        <select name="algorithm-select" id="algorithm-select">
+            <option value="a">Decode Algorithm A</option>
+            <option value="b">Decode Algorithm B</option>
+        </select><br />
+        <button type="submit">Decode</button>
     </form>
 
     <div id="output"></div>
 
 `;
 
+const inputForm = document.getElementById('cal-decoder');
 const inputFile = document.getElementById('cal-doc');
 const output = document.getElementById('output');
 
-inputFile.addEventListener('change', (event) => {
+inputForm.addEventListener('submit', (event) => {
 
     event.preventDefault();
     output.innerHTML = '';
+    const calFile = inputFile.files[0];
     let calValue;
 
-    const calFile = event.target.files[0];
     if (calFile && calFile.type === 'text/plain') {
         parseCalFile(calFile)
             .then(parsedText => {
@@ -72,9 +91,21 @@ function calcCalValue (parsedText) {
     const lines = parsedText.split('\n');
 
     for (let i = 0; i < lines.length; i++) {
-        const characters = lines[i].split('');
-        let firstDigit = findFirstDigit(characters);
-        let lastDigit = findLastDigit(characters);
+
+        const algorithm = document.getElementById('algorithm-select').value;
+        const line = lines[i];
+        const characters = line.split('');
+        let firstDigit, lastDigit;
+
+        if (algorithm === 'a') {
+            firstDigit = findFirstDigit(characters);
+            lastDigit = findLastDigit(characters);
+        }
+        else if (algorithm === 'b') {
+            firstDigit = readFirstDigit(characters);
+            lastDigit = readLastDigit(characters);
+        };
+
         let lineValue = concatenateDigits(firstDigit, lastDigit);
         calValue += lineValue;
     };
@@ -117,6 +148,57 @@ function findLastDigit(characters) {
 
     alertUser(3);
     return null;
+
+};
+
+function readFirstDigit(characters) {
+
+    for (i = 0; i < characters.length; i++) {
+
+        let char = Number(characters[i]);
+        if (!isNaN(char)) {
+            if (char >= 0 && char <= 9) {
+                return characters[i];
+            };
+        }
+         else {
+            const line = characters.join('');
+            const pattern = `/${line.slice(0, i + 1)}/`;
+
+            for (let writtenDigit in WRITTEN_DIGITS) {
+                if (pattern.match(writtenDigit)) {
+                    return Number(WRITTEN_DIGITS[writtenDigit]);
+                };
+            };
+         };
+    };
+};
+
+function readLastDigit(characters) {
+    
+    for (i = characters.length - 1; i >= 0; i--) {
+
+        if (characters[i].trim() == '') {
+            continue;
+        }
+        
+        let char = Number(characters[i]);
+        if (!isNaN(char)) {
+            if (char >= 0 && char <= 9) {
+                return characters[i];
+            };
+        }
+         else {
+            const line = characters.join('');
+            const pattern = `/${line.slice(i, characters.length)}/`;
+
+            for (let writtenDigit in WRITTEN_DIGITS) {
+                if (pattern.match(writtenDigit)) {
+                    return Number(WRITTEN_DIGITS[writtenDigit]);
+                };
+            };
+         };
+    };
 
 };
 
