@@ -16,7 +16,7 @@ Interested in trying it out yourself? Read more about how it works [here](https:
 
 * Open the `public` folder
 * Open the folder corresponding to the annual set of interest.
-* Open the folder corresponding to the daily challenge of interest.
+* Select the file corresponding to the daily challenge of interest (files are formatted in `YY##` format).
 
 ### To view solutions as interactive web pages...
 
