@@ -7,7 +7,9 @@
     --default-color: rgba(17, 27, 31, 1);
     --default-bg-color: rgba(255, 255, 255, 0.85);
     --default-border: 3px dotted rgba(203, 203, 203, 1);
-    --default-transition: 400ms;
+    --default-transition: 300ms;
+    --default-button-padding: 0.5em 3em;
+    --default-fade-in: fadeIn 0.75s;
 
     --accent-font: "PT Sans Narrow", "Arial Narrow", sans-serif;
     --accent-color-1: rgba(67, 104, 124, 1);
@@ -16,16 +18,18 @@
     --accent-color-4: rgba(203, 203, 203, 1);
     --accent-weight: 600;
 
+    --problem-color: rgba(153, 0, 0, 1);
+
     --header-size: 1.75em;
 
     --button-size: 0.9em;
     --button-scale: scale(1.1);
 
+    --huge-space: 8em;
     --large-space: 5em;
     --medium-space: 3em;
     --small-space: 1em;
     --tiny-space: 0.25em;
-
 }
 
 body {
@@ -67,7 +71,7 @@ header {
 }
 
 #container {
-    padding: var(--medium-space) var(--large-space);
+    padding: var(--small-space) var(--large-space);
     background-color: var(--default-bg-color);
     display: flex;
     flex-direction: column;
@@ -78,15 +82,22 @@ header {
 }
 
 #prompt {
-    margin: 0px var(--medium-space) var(--medium-space) var(--medium-space);
-    padding-bottom: var(--medium-space);
+    margin: 0px var(--small-space) var(--small-space) var(--small-space);
+    padding-bottom: var(--small-space);
     border-bottom: var(--default-border);
 }
 
 footer {
-    margin: var(--medium-space);
-    padding: var(--medium-space);
+    margin: var(--small-space);
+    padding: var(--small-space) var(--medium-space);
     border-top: var(--default-border);
+}
+
+form {
+    margin: var(--medium-space) var(--large-space);
+    padding: var(--medium-space) var(--huge-space);
+    background-color: var(--default-bg-color);
+    border-radius: var(--default-radius);
 }
 
 h1 {
@@ -108,24 +119,130 @@ a:hover {
     color: var(--accent-color-4);
 }
 
-.button {
-    padding: 1.5em 5em;
-    border-radius: var(--default-radius);
-    background-color: var(--accent-color-1);
-    font-family: var(--default-font);
-    font-size: var(--button-size);
-    color: var(--accent-color-3);
+select {
+    margin: 0 0 var(--small-space) 0;
+    font-family: var(--accent-font);
+    font-size: var(--default-size);
     transition: var(--default-transition);
+    text-transform: uppercase;
+    background: transparent;
     border: 0;
 }
 
-.button:hover {
+select:hover {
+    background-color: var(--accent-color-4);
+}
+
+.action-button {
+    padding: var(--default-button-padding);
+    border-radius: var(--default-radius);
+    background-color: var(--default-color);
+    font-family: var(--accent-font);
+    font-size: var(--default-size);
+    color: var(--accent-color-4);
+    transition: var(--default-transition);
+    text-transform: uppercase;
+    border: 0;
+}
+
+.action-button:hover {
+    background-color: var(--accent-color-1);
+    color: var(--accent-color-3);
+    transform: var(--button-scale);
+}
+
+.file-upload-button {
+    font-size: var(--header-size);
+    padding: var(--tiny-space);
+    transition: var(--default-transition);
+    cursor: pointer;
+}
+
+.file-upload-button:hover {
+    background-color: var(--accent-color-4);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.regular-button {
+    border-radius: var(--default-radius);
+    background-color: var(--accent-color-1);
+    font-family: var(--accent-font);
+    font-size: var(--button-size);
+    color: var(--accent-color-3);
+    transition: var(--default-transition);
+    padding: var(--default-button-padding);
+    border: 0;
+    text-transform: uppercase;
+}
+
+.regular-button:hover {
     background-color: var(--default-color);
     color: var(--accent-color-4);
-    transform: var(--button-scale);
 }
 
 .big-icon {
     font-size: var(--header-size);
     color: var(--accent-color-3);
+}
+
+.highlight {
+    font-weight: var(--accent-weight);
+    color: var(--default-color);
+}
+
+.hint {
+    color: var(--accent-color-1);
+}
+
+#file-name-text {
+    font-style: italic;
+}
+
+.solution {
+    margin-top: var(--medium-space);
+    color: var(--accent-color-1);
+    animation: var(--default-fade-in);
+    -webkit-animation: var(--default-fade-in);
+    -moz-animation: var(--default-fade-in);
+    -o-animation: var(--default-fade-in);
+    -ms-animation: var(--default-fade-in);
+}
+
+.problem {
+    margin-top: var(--medium-space);
+    color: var(--problem-color);
+    font-style: italic;
+    animation: var(--default-fade-in);
+    -webkit-animation: var(--default-fade-in);
+    -moz-animation: var(--default-fade-in);
+    -o-animation: var(--default-fade-in);
+    -ms-animation: var(--default-fade-in);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+  
+@-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+  
+@-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+  
+@-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
