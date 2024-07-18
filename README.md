@@ -31,7 +31,7 @@ Interested in trying it out yourself? Read more about how it works [here](https:
 Some challenge solutions are built to analyze data from external files. For convenience, sample data is included as part of this repository.
 
 * Open the `sample-data` folder.
-* Open the folder corresponding to the daily annual set of interest.
+* Open the folder corresponding to the annual set of interest.
 * Open the folder corresponding to the daily challenge of interest (file names are self-explanatory).
 
 ## Credits
