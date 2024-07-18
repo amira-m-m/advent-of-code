@@ -46,7 +46,7 @@ body {
     margin: 0;
 }
 
-header {
+#header-bar {
     background-color: var(--default-color);
     color: var(--accent-color-2);
     display: flex;
@@ -68,6 +68,16 @@ header {
     display: flex;
     align-items: center;
     
+}
+
+nav {
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 25%;
+    flex: 1;
+    background-color: var(--accent-color-1);
+    color: var(--accent-color-3);
 }
 
 #container {

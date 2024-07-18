@@ -21,14 +21,25 @@
 
         <header>
 
-            <div id="header-left">
-                <ion-icon name="snow-outline" class="big-icon"></ion-icon>
-                <h1>Advent of Code</h1>        
+            <div id="header-bar">
+
+                <div id="header-left">
+                    <ion-icon name="snow-outline" class="big-icon"></ion-icon>
+                    <h1>Advent of Code</h1>        
+                </div>
+                
+                <div id="header-right">
+                    <ion-icon id="menu-icon" name="menu-outline" class="big-icon"></ion-icon> <!-- Placeholder for navigation menu --> 
+                </div>
+
             </div>
-            
-            <div id="header-right">
-                <ion-icon name="menu-outline" class="big-icon"></ion-icon> <!-- Placeholder for navigation menu --> 
-            </div>
+
+            <nav id="main-menu">
+                <ul>
+                    <li>Home</li>
+                    <li>2023</li>
+                </ul>
+            </nav>
 
         </header>
 
@@ -54,6 +65,7 @@
 
         </div>
 
+        <script src="/assets/nav.js"></script>
         <script src="/2023/2301.js"></script>
 
     </body>
